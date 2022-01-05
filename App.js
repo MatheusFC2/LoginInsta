@@ -14,56 +14,62 @@ import {
 import { FontAwesome5 } from '@expo/vector-icons'
 export default function App() {
   return (
-    <View style={styles.container}>
-      <StatusBar 
-        backgroundColor="#FFF" 
-        translucent={false} 
-      />
+    <KeyboardAvoidingView
+      behavior={Platform.OS == "ios" ? "padding" : "height"}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.container}>
+          <StatusBar 
+            backgroundColor="#FFF" 
+            translucent={false} 
+          />
 
-      <Image 
-        source={require('./src/assets/logo.png')} 
-        style={styles.logo} 
-      />
-    
-      <TextInput
-        placeholder="Celular, username ou email"
-        style={styles.input}
-      />
+          <Image 
+            source={require('./src/assets/logo.png')} 
+            style={styles.logo} 
+          />
+        
+          <TextInput
+            placeholder="Celular, username ou email"
+            style={styles.input}
+          />
 
-      <TextInput
-        placeholder="Senha"
-        style={styles.input}
-      />
+          <TextInput
+            placeholder="Senha"
+            style={styles.input}
+          />
 
-      <View style={styles.forgotContainer}>
-        <TouchableOpacity>
-          <Text style={styles.forgotText}>Esqueceu sua senhas?</Text>
-        </TouchableOpacity>
-      </View>
+          <View style={styles.forgotContainer}>
+            <TouchableOpacity>
+              <Text style={styles.forgotText}>Esqueceu sua senhas?</Text>
+            </TouchableOpacity>
+          </View>
 
-      <TouchableOpacity style={styles.loginButton}>
-        <Text style={styles.loginText}>Entrar</Text>
-      </TouchableOpacity>
-    
-      <TouchableOpacity style={styles.facebookButton}>
-        <FontAwesome5 name="facebook" size={24} color="#399fff" />
-        <Text style={styles.facebookText}>Continue com Matheus</Text>
-      </TouchableOpacity>
+          <TouchableOpacity style={styles.loginButton}>
+            <Text style={styles.loginText}>Entrar</Text>
+          </TouchableOpacity>
+        
+          <TouchableOpacity style={styles.facebookButton}>
+            <FontAwesome5 name="facebook" size={24} color="#399fff" />
+            <Text style={styles.facebookText}>Continue com Matheus</Text>
+          </TouchableOpacity>
 
-      <View style={styles.divisor}>
-        <View style={styles.divisorLine}></View>
-        <Text style={{ marginHorizontal: '3%'}}>OU</Text>
-        <View style={styles.divisorLine}></View>
-      </View>
-      
-      <View style={styles.signUpContainer}>
-        <Text style={styles.signUpText}>Não possui uma conta?</Text>
-        <TouchableOpacity>
-          <Text style={styles.signUpButton}>Cadastre-se</Text>
-        </TouchableOpacity>
-      </View>
+          <View style={styles.divisor}>
+            <View style={styles.divisorLine}></View>
+            <Text style={{ marginHorizontal: '3%'}}>OU</Text>
+            <View style={styles.divisorLine}></View>
+          </View>
+          
+          <View style={styles.signUpContainer}>
+            <Text style={styles.signUpText}>Não possui uma conta?</Text>
+            <TouchableOpacity>
+              <Text style={styles.signUpButton}>Cadastre-se</Text>
+            </TouchableOpacity>
+          </View>
 
-    </View>
+        </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 }
 
